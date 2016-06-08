@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C88D7B71D07AE07003CF724 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7B61D07AE07003CF724 /* main.m */; };
+		3C88D7BA1D07AE07003CF724 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7B91D07AE07003CF724 /* AppDelegate.m */; };
+		3C88D7BD1D07AE07003CF724 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7BC1D07AE07003CF724 /* ViewController.m */; };
+		3C88D7C01D07AE07003CF724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C88D7BE1D07AE07003CF724 /* Main.storyboard */; };
+		3C88D7C21D07AE07003CF724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C88D7C11D07AE07003CF724 /* Assets.xcassets */; };
+		3C88D7C51D07AE07003CF724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C88D7C31D07AE07003CF724 /* LaunchScreen.storyboard */; };
+		3C88D7D01D07AE07003CF724 /* TearAwayModalViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7CF1D07AE07003CF724 /* TearAwayModalViewTests.m */; };
+		3C88D7DC1D07AE88003CF724 /* TearAwayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7DB1D07AE88003CF724 /* TearAwayController.m */; };
+		3C88D7DF1D07BF79003CF724 /* TearAwayModalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7DE1D07BF79003CF724 /* TearAwayModalVC.m */; };
+		3C88D7E21D07C2A8003CF724 /* CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7E11D07C2A8003CF724 /* CancelButton.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C88D7CC1D07AE07003CF724 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C88D7AA1D07AE07003CF724 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C88D7B11D07AE07003CF724;
+			remoteInfo = TearAwayModalView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C88D7B21D07AE07003CF724 /* TearAwayModalView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TearAwayModalView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C88D7B61D07AE07003CF724 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3C88D7B81D07AE07003CF724 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3C88D7B91D07AE07003CF724 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3C88D7BB1D07AE07003CF724 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3C88D7BC1D07AE07003CF724 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3C88D7BF1D07AE07003CF724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3C88D7C11D07AE07003CF724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3C88D7C41D07AE07003CF724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3C88D7C61D07AE07003CF724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C88D7CB1D07AE07003CF724 /* TearAwayModalViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TearAwayModalViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C88D7CF1D07AE07003CF724 /* TearAwayModalViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TearAwayModalViewTests.m; sourceTree = "<group>"; };
+		3C88D7D11D07AE07003CF724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C88D7DA1D07AE88003CF724 /* TearAwayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TearAwayController.h; sourceTree = "<group>"; };
+		3C88D7DB1D07AE88003CF724 /* TearAwayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TearAwayController.m; sourceTree = "<group>"; };
+		3C88D7DD1D07BF79003CF724 /* TearAwayModalVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TearAwayModalVC.h; sourceTree = "<group>"; };
+		3C88D7DE1D07BF79003CF724 /* TearAwayModalVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TearAwayModalVC.m; sourceTree = "<group>"; };
+		3C88D7E01D07C2A8003CF724 /* CancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelButton.h; sourceTree = "<group>"; };
+		3C88D7E11D07C2A8003CF724 /* CancelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelButton.m; sourceTree = "<group>"; };
+		3C88D7E31D07D6C7003CF724 /* TearAwayCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TearAwayCommon.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C88D7AF1D07AE07003CF724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C88D7C81D07AE07003CF724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C88D7A91D07AE07003CF724 = {
+			isa = PBXGroup;
+			children = (
+				3C88D7B41D07AE07003CF724 /* TearAwayModalView */,
+				3C88D7CE1D07AE07003CF724 /* TearAwayModalViewTests */,
+				3C88D7B31D07AE07003CF724 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3C88D7B31D07AE07003CF724 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C88D7B21D07AE07003CF724 /* TearAwayModalView.app */,
+				3C88D7CB1D07AE07003CF724 /* TearAwayModalViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C88D7B41D07AE07003CF724 /* TearAwayModalView */ = {
+			isa = PBXGroup;
+			children = (
+				3C88D7B81D07AE07003CF724 /* AppDelegate.h */,
+				3C88D7B91D07AE07003CF724 /* AppDelegate.m */,
+				3C88D7BB1D07AE07003CF724 /* ViewController.h */,
+				3C88D7BC1D07AE07003CF724 /* ViewController.m */,
+				3C88D7BE1D07AE07003CF724 /* Main.storyboard */,
+				3C88D7C11D07AE07003CF724 /* Assets.xcassets */,
+				3C88D7C31D07AE07003CF724 /* LaunchScreen.storyboard */,
+				3C88D7C61D07AE07003CF724 /* Info.plist */,
+				3C88D7B51D07AE07003CF724 /* Supporting Files */,
+				3C88D7DA1D07AE88003CF724 /* TearAwayController.h */,
+				3C88D7DB1D07AE88003CF724 /* TearAwayController.m */,
+				3C88D7DD1D07BF79003CF724 /* TearAwayModalVC.h */,
+				3C88D7DE1D07BF79003CF724 /* TearAwayModalVC.m */,
+				3C88D7E01D07C2A8003CF724 /* CancelButton.h */,
+				3C88D7E11D07C2A8003CF724 /* CancelButton.m */,
+				3C88D7E31D07D6C7003CF724 /* TearAwayCommon.h */,
+			);
+			path = TearAwayModalView;
+			sourceTree = "<group>";
+		};
+		3C88D7B51D07AE07003CF724 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C88D7B61D07AE07003CF724 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C88D7CE1D07AE07003CF724 /* TearAwayModalViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C88D7CF1D07AE07003CF724 /* TearAwayModalViewTests.m */,
+				3C88D7D11D07AE07003CF724 /* Info.plist */,
+			);
+			path = TearAwayModalViewTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3C88D7B11D07AE07003CF724 /* TearAwayModalView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C88D7D41D07AE07003CF724 /* Build configuration list for PBXNativeTarget "TearAwayModalView" */;
+			buildPhases = (
+				3C88D7AE1D07AE07003CF724 /* Sources */,
+				3C88D7AF1D07AE07003CF724 /* Frameworks */,
+				3C88D7B01D07AE07003CF724 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TearAwayModalView;
+			productName = TearAwayModalView;
+			productReference = 3C88D7B21D07AE07003CF724 /* TearAwayModalView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3C88D7CA1D07AE07003CF724 /* TearAwayModalViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C88D7D71D07AE07003CF724 /* Build configuration list for PBXNativeTarget "TearAwayModalViewTests" */;
+			buildPhases = (
+				3C88D7C71D07AE07003CF724 /* Sources */,
+				3C88D7C81D07AE07003CF724 /* Frameworks */,
+				3C88D7C91D07AE07003CF724 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C88D7CD1D07AE07003CF724 /* PBXTargetDependency */,
+			);
+			name = TearAwayModalViewTests;
+			productName = TearAwayModalViewTests;
+			productReference = 3C88D7CB1D07AE07003CF724 /* TearAwayModalViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C88D7AA1D07AE07003CF724 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Mani Ghasemlou";
+				TargetAttributes = {
+					3C88D7B11D07AE07003CF724 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					3C88D7CA1D07AE07003CF724 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 3C88D7B11D07AE07003CF724;
+					};
+				};
+			};
+			buildConfigurationList = 3C88D7AD1D07AE07003CF724 /* Build configuration list for PBXProject "TearAwayModalView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3C88D7A91D07AE07003CF724;
+			productRefGroup = 3C88D7B31D07AE07003CF724 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3C88D7B11D07AE07003CF724 /* TearAwayModalView */,
+				3C88D7CA1D07AE07003CF724 /* TearAwayModalViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C88D7B01D07AE07003CF724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C88D7C51D07AE07003CF724 /* LaunchScreen.storyboard in Resources */,
+				3C88D7C21D07AE07003CF724 /* Assets.xcassets in Resources */,
+				3C88D7C01D07AE07003CF724 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C88D7C91D07AE07003CF724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C88D7AE1D07AE07003CF724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C88D7BD1D07AE07003CF724 /* ViewController.m in Sources */,
+				3C88D7DF1D07BF79003CF724 /* TearAwayModalVC.m in Sources */,
+				3C88D7BA1D07AE07003CF724 /* AppDelegate.m in Sources */,
+				3C88D7E21D07C2A8003CF724 /* CancelButton.m in Sources */,
+				3C88D7B71D07AE07003CF724 /* main.m in Sources */,
+				3C88D7DC1D07AE88003CF724 /* TearAwayController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C88D7C71D07AE07003CF724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C88D7D01D07AE07003CF724 /* TearAwayModalViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C88D7CD1D07AE07003CF724 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C88D7B11D07AE07003CF724 /* TearAwayModalView */;
+			targetProxy = 3C88D7CC1D07AE07003CF724 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3C88D7BE1D07AE07003CF724 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C88D7BF1D07AE07003CF724 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3C88D7C31D07AE07003CF724 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C88D7C41D07AE07003CF724 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3C88D7D21D07AE07003CF724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3C88D7D31D07AE07003CF724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3C88D7D51D07AE07003CF724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TearAwayModalView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.manicakes.TearAwayModalView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3C88D7D61D07AE07003CF724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TearAwayModalView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.manicakes.TearAwayModalView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3C88D7D81D07AE07003CF724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TearAwayModalViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.manicakes.TearAwayModalViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TearAwayModalView.app/TearAwayModalView";
+			};
+			name = Debug;
+		};
+		3C88D7D91D07AE07003CF724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TearAwayModalViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.manicakes.TearAwayModalViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TearAwayModalView.app/TearAwayModalView";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C88D7AD1D07AE07003CF724 /* Build configuration list for PBXProject "TearAwayModalView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C88D7D21D07AE07003CF724 /* Debug */,
+				3C88D7D31D07AE07003CF724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C88D7D41D07AE07003CF724 /* Build configuration list for PBXNativeTarget "TearAwayModalView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C88D7D51D07AE07003CF724 /* Debug */,
+				3C88D7D61D07AE07003CF724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3C88D7D71D07AE07003CF724 /* Build configuration list for PBXNativeTarget "TearAwayModalViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C88D7D81D07AE07003CF724 /* Debug */,
+				3C88D7D91D07AE07003CF724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3C88D7AA1D07AE07003CF724 /* Project object */;
+}

@@ -135,7 +135,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
     return YES;
   }
 
-  return self.scrollView.contentOffset.y == 0;
+  return self.scrollView.contentOffset.y <= 0;
 }
 
 - (BOOL)contentIsAtBottom
@@ -144,7 +144,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
     return YES;
   }
 
-  return self.scrollView.contentOffset.y ==
+  return self.scrollView.contentOffset.y >=
          (self.scrollView.contentSize.height -
           self.scrollView.frame.size.height);
 }

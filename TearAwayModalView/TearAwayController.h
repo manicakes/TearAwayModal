@@ -15,4 +15,9 @@
 - (void)presentView:(UIView*)contentView
  fromViewController:(UIViewController*)vc
           dismissed:(TearAwayDismissBlock)dismissedBlock;
+
+- (void)presentView:(UIView*)contentView
+     withScrollView:(UIScrollView*)scrollView
+ fromViewController:(UIViewController*)vc
+          dismissed:(TearAwayDismissBlock)dismissBlock;
 @end

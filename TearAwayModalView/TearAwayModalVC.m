@@ -20,6 +20,9 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
 @property (nonatomic, assign) BOOL overCancelButton;
 @property (nonatomic, strong) TearAwayCancelButton* cancelButton;
 @property (nonatomic, assign) CGAffineTransform cancelTransform;
+@property (nonatomic, strong) UIView* contentContainer;
+@property (nonatomic, strong) UIView* contentMask;
+@property (nonatomic, assign) BOOL startedTearing;
 @end
 
 @implementation TearAwayModalVC
@@ -49,6 +52,10 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
   self.cancelButton.layer.masksToBounds = NO;
   self.cancelButton.layer.shadowRadius = 5;
   self.cancelButton.layer.shadowOpacity = 0.5;
+
+  self.contentMask = [[UIView alloc] init];
+  self.contentMask.backgroundColor = [UIColor lightGrayColor];
+  self.contentMask.alpha = 0.0;
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -75,23 +82,27 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
   }
 
   _contentView = contentView;
-  self.contentView.layer.masksToBounds = NO;
-  self.contentView.layer.shadowRadius = 20;
-  self.contentView.layer.shadowOpacity = 0.6;
-  self.contentView.layer.cornerRadius = self.modalCornerRadius;
-  self.contentView.frame =
+  self.contentContainer = [[UIView alloc] init];
+  self.contentContainer.backgroundColor = [UIColor clearColor];
+  self.contentContainer.layer.masksToBounds = NO;
+  self.contentContainer.layer.shadowRadius = 20;
+  self.contentContainer.layer.shadowOpacity = 0.6;
+  self.contentContainer.layer.cornerRadius = self.modalCornerRadius;
+  self.contentContainer.frame =
     CGRectInset(self.view.bounds, self.modalInset, self.modalInset);
-  [self.view addSubview:contentView];
-  self.contentTransform = self.contentView.transform;
+  [self.view addSubview:self.contentContainer];
+  self.contentContainer.frame = self.contentView.frame;
+  [self.contentContainer addSubview:contentView];
+  self.contentTransform = self.contentContainer.transform;
   // pan gesture init
   self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                      action:@selector(didPan:)];
   self.pan.delegate = self;
-  [self.contentView addGestureRecognizer:self.pan];
+  [self.contentContainer addGestureRecognizer:self.pan];
 
   // dynamics init
   self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-  self.snap = [[UISnapBehavior alloc] initWithItem:self.contentView
+  self.snap = [[UISnapBehavior alloc] initWithItem:self.contentContainer
                                        snapToPoint:self.view.center];
   [self.animator addBehavior:self.snap];
 }
@@ -118,16 +129,111 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
   return dist <= cancelDistance;
 }
 
+- (BOOL)contentIsAtTop
+{
+  if (self.scrollView == nil) {
+    return YES;
+  }
+
+  return self.scrollView.contentOffset.y == 0;
+}
+
+- (BOOL)contentIsAtBottom
+{
+  if (self.scrollView == nil) {
+    return YES;
+  }
+
+  return self.scrollView.contentOffset.y ==
+         (self.scrollView.contentSize.height -
+          self.scrollView.frame.size.height);
+}
+
+- (BOOL)contentIsAtLeftMost
+{
+  if (self.scrollView == nil) {
+    return YES;
+  }
+
+  return self.scrollView.contentOffset.x == 0;
+}
+
+- (BOOL)contentIsAtRightMost
+{
+  if (self.scrollView == nil) {
+    return YES;
+  }
+
+  return self.scrollView.contentOffset.x ==
+         (self.scrollView.contentSize.width - self.scrollView.frame.size.width);
+}
+
+- (BOOL)shouldTearAway:(UIPanGestureRecognizer*)pan
+{
+  if (self.startedTearing) {
+    return YES;
+  }
+
+  CGPoint vel = [pan velocityInView:self.view];
+
+  BOOL panVert = fabs(vel.y) > fabs(vel.x);
+
+  BOOL panUp = panVert && vel.y < 0;
+  BOOL panDown = panVert && vel.y > 0;
+  BOOL panLeft = !panVert && vel.x < 0;
+  BOOL panRight = !panVert && vel.x > 0;
+
+  //  NSLog(@"up: %d down: %d left: %d right: %d", panUp, panDown, panLeft,
+  //        panRight);
+
+  if ([self contentIsAtTop] && panDown) {
+    NSLog(@"CONTENT AT TOP, PANNING DOWN");
+    return YES;
+  }
+
+  if ([self contentIsAtBottom] && panUp) {
+    NSLog(@"CONTENT AT BOTTOM, PANNING UP");
+    return YES;
+  }
+
+  if ([self contentIsAtLeftMost] && panRight) {
+    NSLog(@"CONTENT AT LEFT, PANNING RIGHT");
+    return YES;
+  }
+
+  if ([self contentIsAtRightMost] && panLeft) {
+    NSLog(@"CONTENT AT RIGHT, PANNING LEFT");
+    return YES;
+  }
+
+  NSLog(@"PAN REJECTED");
+  return NO;
+}
+
 - (void)didPan:(UIPanGestureRecognizer*)pan
 {
   if (pan.state == UIGestureRecognizerStateBegan) {
+    if (![self shouldTearAway:pan]) {
+      return;
+    }
+    self.startedTearing = YES;
+    if (self.scrollView != nil) {
+      self.scrollView.scrollEnabled = NO;
+    }
     [self.animator removeBehavior:self.snap];
+    self.contentMask.frame = self.contentContainer.bounds;
+    [self.contentContainer addSubview:self.contentMask];
     [UIView animateWithDuration:0.5
-                     animations:^{
-                       self.view.backgroundColor =
-                         [UIColor colorWithWhite:0.0 alpha:0.8];
-                     }];
+      animations:^{
+        self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.8];
+        self.contentMask.alpha = 0.8;
+      }
+      completion:^(BOOL finished){
+      }];
   } else if (pan.state == UIGestureRecognizerStateChanged) {
+    if (!self.startedTearing) {
+      return;
+    }
     CGPoint locationInView = [pan locationInView:self.view];
     // only scale if we are not in want dismissal state
     if (!self.wantsDismissal) {
@@ -135,17 +241,17 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
       CGFloat translationDist =
         sqrtf(translation.x * translation.x + translation.y * translation.y);
       self.dismissProgress = MIN(1.0, translationDist / self.dismissDistance);
-      self.contentView.center = CGPointMake(
+      self.contentContainer.center = CGPointMake(
         (self.dismissProgress) * (locationInView.x) +
           (1 - self.dismissProgress) * (self.view.center.x + translation.x),
         (self.dismissProgress) * (locationInView.y) +
           (1 - self.dismissProgress) * (self.view.center.y + translation.y));
-      CGFloat scaleFactor = MAX(0.3, 1 - self.dismissProgress * 0.7);
-      self.contentView.transform =
+      CGFloat scaleFactor = MAX(0.4, 1 - self.dismissProgress * 0.6);
+      self.contentContainer.transform =
         CGAffineTransformScale(self.contentTransform, scaleFactor, scaleFactor);
       // self.contentView.layer.cornerRadius = 15;
     } else {
-      self.contentView.center = locationInView;
+      self.contentContainer.center = locationInView;
 
       BOOL isCloseToCancelButton = [self isCloseToCancelButton:locationInView];
       if (!self.overCancelButton && isCloseToCancelButton) {
@@ -168,6 +274,8 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
                                  self.cancelButton.transform =
                                    CGAffineTransformScale(self.cancelTransform,
                                                           1.3, 1.3);
+                                 self.contentMask.backgroundColor =
+                                   [UIColor redColor];
                                }
                                completion:nil];
             }
@@ -183,6 +291,8 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
                             options:0
                          animations:^{
                            self.cancelButton.transform = self.cancelTransform;
+                           self.contentMask.backgroundColor =
+                             [UIColor lightGrayColor];
                          }
                          completion:nil];
       }
@@ -192,28 +302,38 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
       self.wantsDismissal = YES;
     }
   } else if (pan.state == UIGestureRecognizerStateEnded) {
+    if (!self.startedTearing) {
+      return;
+    }
+
+    self.startedTearing = NO;
     if (!self.overCancelButton) {
       self.wantsDismissal = NO;
+      if (self.scrollView != nil) {
+        self.scrollView.scrollEnabled = YES;
+      }
       // restore everything
       [UIView animateWithDuration:0.3
-                            delay:0
-           usingSpringWithDamping:0.5
-            initialSpringVelocity:0
-                          options:0
-                       animations:^{
-                         self.contentView.transform = self.contentTransform;
-                         self.view.backgroundColor =
-                           [UIColor colorWithWhite:0.0 alpha:1.0];
-                         // self.contentView.layer.cornerRadius = 0;
-                       }
-                       completion:nil];
+        delay:0
+        usingSpringWithDamping:0.5
+        initialSpringVelocity:0
+        options:0
+        animations:^{
+          self.contentContainer.transform = self.contentTransform;
+          self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:1.0];
+          self.contentMask.alpha = 0.0;
+          // self.contentView.layer.cornerRadius = 0;
+        }
+        completion:^(BOOL finished) {
+          [self.contentMask removeFromSuperview];
+        }];
 
       [self.animator addBehavior:self.snap];
     } else {
       // we let go over the cancel button. time to shut down.
       [UIView animateWithDuration:0.5
                        animations:^{
-                         self.contentView.alpha = 0.0;
+                         self.contentContainer.alpha = 0.0;
                        }];
       [UIView animateWithDuration:0.5
         delay:0

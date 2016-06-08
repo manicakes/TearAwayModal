@@ -16,7 +16,7 @@
 		3C88D7D01D07AE07003CF724 /* TearAwayModalViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7CF1D07AE07003CF724 /* TearAwayModalViewTests.m */; };
 		3C88D7DC1D07AE88003CF724 /* TearAwayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7DB1D07AE88003CF724 /* TearAwayController.m */; };
 		3C88D7DF1D07BF79003CF724 /* TearAwayModalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7DE1D07BF79003CF724 /* TearAwayModalVC.m */; };
-		3C88D7E21D07C2A8003CF724 /* CancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7E11D07C2A8003CF724 /* CancelButton.m */; };
+		3C88D7E21D07C2A8003CF724 /* TearAwayCancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88D7E11D07C2A8003CF724 /* TearAwayCancelButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +47,8 @@
 		3C88D7DB1D07AE88003CF724 /* TearAwayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TearAwayController.m; sourceTree = "<group>"; };
 		3C88D7DD1D07BF79003CF724 /* TearAwayModalVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TearAwayModalVC.h; sourceTree = "<group>"; };
 		3C88D7DE1D07BF79003CF724 /* TearAwayModalVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TearAwayModalVC.m; sourceTree = "<group>"; };
-		3C88D7E01D07C2A8003CF724 /* CancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelButton.h; sourceTree = "<group>"; };
-		3C88D7E11D07C2A8003CF724 /* CancelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelButton.m; sourceTree = "<group>"; };
+		3C88D7E01D07C2A8003CF724 /* TearAwayCancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TearAwayCancelButton.h; sourceTree = "<group>"; };
+		3C88D7E11D07C2A8003CF724 /* TearAwayCancelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TearAwayCancelButton.m; sourceTree = "<group>"; };
 		3C88D7E31D07D6C7003CF724 /* TearAwayCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TearAwayCommon.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,8 +104,8 @@
 				3C88D7DB1D07AE88003CF724 /* TearAwayController.m */,
 				3C88D7DD1D07BF79003CF724 /* TearAwayModalVC.h */,
 				3C88D7DE1D07BF79003CF724 /* TearAwayModalVC.m */,
-				3C88D7E01D07C2A8003CF724 /* CancelButton.h */,
-				3C88D7E11D07C2A8003CF724 /* CancelButton.m */,
+				3C88D7E01D07C2A8003CF724 /* TearAwayCancelButton.h */,
+				3C88D7E11D07C2A8003CF724 /* TearAwayCancelButton.m */,
 				3C88D7E31D07D6C7003CF724 /* TearAwayCommon.h */,
 			);
 			path = TearAwayModalView;
@@ -231,7 +231,7 @@
 				3C88D7BD1D07AE07003CF724 /* ViewController.m in Sources */,
 				3C88D7DF1D07BF79003CF724 /* TearAwayModalVC.m in Sources */,
 				3C88D7BA1D07AE07003CF724 /* AppDelegate.m in Sources */,
-				3C88D7E21D07C2A8003CF724 /* CancelButton.m in Sources */,
+				3C88D7E21D07C2A8003CF724 /* TearAwayCancelButton.m in Sources */,
 				3C88D7B71D07AE07003CF724 /* main.m in Sources */,
 				3C88D7DC1D07AE88003CF724 /* TearAwayController.m in Sources */,
 			);
@@ -424,6 +424,7 @@
 				3C88D7D61D07AE07003CF724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C88D7D71D07AE07003CF724 /* Build configuration list for PBXNativeTarget "TearAwayModalViewTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +433,7 @@
 				3C88D7D91D07AE07003CF724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 @interface TearAwayModalVC : UIViewController
 @property (nonatomic, strong) UIView* contentView;
+@property (nonatomic, strong) UIScrollView* scrollView;
 @property (nonatomic, assign) CGFloat dismissDistance;
 @property (nonatomic, strong) TearAwayDismissBlock dismissBlock;
 @property (nonatomic, assign) CGFloat modalInset;

@@ -6,10 +6,12 @@
 //  Copyright © 2016 Mani Ghasemlou. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "TearAwayCommon.h"
+#import <UIKit/UIKit.h>
 @interface TearAwayModalVC : UIViewController
 @property (nonatomic, strong) UIView* contentView;
 @property (nonatomic, assign) CGFloat dismissDistance;
-@property (nonatomic, strong) DismissBlock dismissBlock;
+@property (nonatomic, strong) TearAwayDismissBlock dismissBlock;
+@property (nonatomic, assign) CGFloat modalInset;
+@property (nonatomic, assign) CGFloat modalCornerRadius;
 @end

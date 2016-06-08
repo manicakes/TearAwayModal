@@ -9,17 +9,21 @@
 #import "TearAwayController.h"
 #import "TearAwayModalVC.h"
 
-@interface TearAwayController ()
+@interface
+TearAwayController ()
 @property (nonatomic, strong) UIView* contentView;
 @property (nonatomic, strong) UIViewController* presentingVC;
 @property (nonatomic, strong) UIView* view;
 @property (nonatomic, strong) TearAwayModalVC* modalVC;
-@property (nonatomic, strong) DismissBlock dismiss;
+@property (nonatomic, strong) TearAwayDismissBlock dismiss;
 @end
 
 @implementation TearAwayController
 
-- (void)presentView:(UIView*)contentView fromViewController:(UIViewController*)vc dismissed:(DismissBlock)dismissedBlock {
+- (void)presentView:(UIView*)contentView
+ fromViewController:(UIViewController*)vc
+          dismissed:(TearAwayDismissBlock)dismissedBlock
+{
   self.dismiss = dismissedBlock;
   self.contentView = contentView;
   self.presentingVC = vc;
@@ -27,7 +31,8 @@
   [self displayContent];
 }
 
-- (void)initializeModal {
+- (void)initializeModal
+{
   self.view = [[UIView alloc] initWithFrame:self.presentingVC.view.bounds];
   self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:1.0];
   self.modalVC = [[TearAwayModalVC alloc] init];
@@ -36,10 +41,12 @@
   self.modalVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
 }
 
-- (void)displayContent {
+- (void)displayContent
+{
   self.modalVC.contentView = self.contentView;
-  [self.presentingVC presentViewController:self.modalVC animated:NO completion:nil];
+  [self.presentingVC presentViewController:self.modalVC
+                                  animated:NO
+                                completion:nil];
 }
-
 
 @end

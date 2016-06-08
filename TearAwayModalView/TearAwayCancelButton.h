@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CancelButton : UIView
+@interface TearAwayCancelButton : UIView
 @property (nonatomic, assign) BOOL on;
 @end

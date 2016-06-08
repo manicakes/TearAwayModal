@@ -8,5 +8,5 @@
 
 #ifndef Common_h
 #define Common_h
-typedef void (^DismissBlock)();
+typedef void (^TearAwayDismissBlock)();
 #endif /* Common_h */

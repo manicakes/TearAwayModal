@@ -20,7 +20,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
 @property (nonatomic, assign) BOOL overCancelButton;
 @property (nonatomic, strong) TearAwayCancelButton* cancelButton;
 @property (nonatomic, assign) CGAffineTransform cancelTransform;
-@property (nonatomic, strong) UIView* contentContainer;
+@property (nonatomic, strong) UIVisualEffectView* contentContainer;
 @property (nonatomic, strong) UIView* contentMask;
 @property (nonatomic, assign) BOOL startedTearing;
 @end
@@ -40,7 +40,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-
+  self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
   self.cancelButton = [[TearAwayCancelButton alloc] init];
   self.cancelButton.frame = CGRectMake(0, 0, 80, 80);
   self.cancelButton.center =
@@ -54,7 +54,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
   self.cancelButton.layer.shadowOpacity = 0.5;
 
   self.contentMask = [[UIView alloc] init];
-  self.contentMask.backgroundColor = [UIColor lightGrayColor];
+  self.contentMask.backgroundColor = [UIColor blackColor];
   self.contentMask.alpha = 0.0;
 }
 
@@ -82,7 +82,8 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
   }
 
   _contentView = contentView;
-  self.contentContainer = [[UIView alloc] init];
+  self.contentContainer = [[UIVisualEffectView alloc]
+    initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
   self.contentContainer.backgroundColor = [UIColor clearColor];
   self.contentContainer.layer.masksToBounds = NO;
   self.contentContainer.layer.shadowRadius = 20;
@@ -92,7 +93,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
     CGRectInset(self.view.bounds, self.modalInset, self.modalInset);
   [self.view addSubview:self.contentContainer];
   self.contentContainer.frame = self.contentView.frame;
-  [self.contentContainer addSubview:contentView];
+  [self.contentContainer.contentView addSubview:contentView];
   self.contentTransform = self.contentContainer.transform;
   // pan gesture init
   self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self
@@ -210,6 +211,22 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
   return NO;
 }
 
+- (void)shrunkenMode
+{
+}
+
+- (void)bigMode
+{
+}
+
+- (void)deleteMode
+{
+}
+
+- (void)offDeleteMode
+{
+}
+
 - (void)didPan:(UIPanGestureRecognizer*)pan
 {
   if (pan.state == UIGestureRecognizerStateBegan) {
@@ -221,15 +238,8 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
       self.scrollView.scrollEnabled = NO;
     }
     [self.animator removeBehavior:self.snap];
-    self.contentMask.frame = self.contentContainer.bounds;
-    [self.contentContainer addSubview:self.contentMask];
-    [UIView animateWithDuration:0.5
-      animations:^{
-        self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.8];
-        self.contentMask.alpha = 0.8;
-      }
-      completion:^(BOOL finished){
-      }];
+    // self.contentMask.frame = self.contentContainer.bounds;
+    //[self.contentContainer addSubview:self.contentMask];
   } else if (pan.state == UIGestureRecognizerStateChanged) {
     if (!self.startedTearing) {
       return;
@@ -249,6 +259,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
       CGFloat scaleFactor = MAX(0.4, 1 - self.dismissProgress * 0.6);
       self.contentContainer.transform =
         CGAffineTransformScale(self.contentTransform, scaleFactor, scaleFactor);
+      self.contentView.alpha = 1 - self.dismissProgress;
       // self.contentView.layer.cornerRadius = 15;
     } else {
       self.contentContainer.center = locationInView;
@@ -266,24 +277,24 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
               self.overCancelButton = YES;
               self.cancelButton.on = YES;
               [UIView animateWithDuration:0.5
-                                    delay:0
-                   usingSpringWithDamping:0.3
-                    initialSpringVelocity:0
-                                  options:0
-                               animations:^{
-                                 self.cancelButton.transform =
-                                   CGAffineTransformScale(self.cancelTransform,
-                                                          1.3, 1.3);
-                                 self.contentMask.backgroundColor =
-                                   [UIColor redColor];
-                               }
-                               completion:nil];
+                delay:0
+                usingSpringWithDamping:0.3
+                initialSpringVelocity:0
+                options:0
+                animations:^{
+                  self.cancelButton.transform =
+                    CGAffineTransformScale(self.cancelTransform, 1.3, 1.3);
+                }
+                completion:^(BOOL finished) {
+                  [self deleteMode];
+                }];
             }
           });
       } else if (self.overCancelButton && !isCloseToCancelButton) {
         // shrink it
         self.overCancelButton = NO;
         self.cancelButton.on = NO;
+        [self offDeleteMode];
         [UIView animateWithDuration:0.5
                               delay:0
              usingSpringWithDamping:0.3
@@ -291,8 +302,6 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
                             options:0
                          animations:^{
                            self.cancelButton.transform = self.cancelTransform;
-                           self.contentMask.backgroundColor =
-                             [UIColor lightGrayColor];
                          }
                          completion:nil];
       }
@@ -300,6 +309,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
 
     if (self.dismissProgress >= 1.0) {
       self.wantsDismissal = YES;
+      [self shrunkenMode];
     }
   } else if (pan.state == UIGestureRecognizerStateEnded) {
     if (!self.startedTearing) {
@@ -313,6 +323,7 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
         self.scrollView.scrollEnabled = YES;
       }
       // restore everything
+      [self bigMode];
       [UIView animateWithDuration:0.3
         delay:0
         usingSpringWithDamping:0.5
@@ -320,12 +331,12 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
         options:0
         animations:^{
           self.contentContainer.transform = self.contentTransform;
-          self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:1.0];
-          self.contentMask.alpha = 0.0;
+          self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+          self.contentView.alpha = 1.0;
           // self.contentView.layer.cornerRadius = 0;
         }
-        completion:^(BOOL finished) {
-          [self.contentMask removeFromSuperview];
+        completion:^(BOOL finished){
+          //[self.contentMask removeFromSuperview];
         }];
 
       [self.animator addBehavior:self.snap];

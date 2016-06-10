@@ -11,6 +11,7 @@
 
 @interface
 ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView* imageView;
 @property (nonatomic, strong) TearAwayController* tear;
 @end
 

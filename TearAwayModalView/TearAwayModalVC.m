@@ -211,22 +211,6 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
   return NO;
 }
 
-- (void)shrunkenMode
-{
-}
-
-- (void)bigMode
-{
-}
-
-- (void)deleteMode
-{
-}
-
-- (void)offDeleteMode
-{
-}
-
 - (void)didPan:(UIPanGestureRecognizer*)pan
 {
   if (pan.state == UIGestureRecognizerStateBegan) {
@@ -286,7 +270,6 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
                     CGAffineTransformScale(self.cancelTransform, 1.3, 1.3);
                 }
                 completion:^(BOOL finished) {
-                  [self deleteMode];
                 }];
             }
           });
@@ -294,7 +277,6 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
         // shrink it
         self.overCancelButton = NO;
         self.cancelButton.on = NO;
-        [self offDeleteMode];
         [UIView animateWithDuration:0.5
                               delay:0
              usingSpringWithDamping:0.3
@@ -309,7 +291,6 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
 
     if (self.dismissProgress >= 1.0) {
       self.wantsDismissal = YES;
-      [self shrunkenMode];
     }
   } else if (pan.state == UIGestureRecognizerStateEnded) {
     if (!self.startedTearing) {
@@ -323,7 +304,6 @@ TearAwayModalVC ()<UIGestureRecognizerDelegate>
         self.scrollView.scrollEnabled = YES;
       }
       // restore everything
-      [self bigMode];
       [UIView animateWithDuration:0.3
         delay:0
         usingSpringWithDamping:0.5
